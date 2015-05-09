@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dublin Bathymetry</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdn.rawgit.com/turban/webgl-terrain/master/lib/TrackballControls.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/renderers/CanvasRenderer.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/renderers/Projector.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+      }
+      #webgl {
+        width: 100%;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="col-md-1">
+      <ul>
+        <li><a href="javascript:draw('Muglins');">Muglins Area</a>
+        <li><a href="javascript:draw('Guide Me');">Guide Me Area</a>
+        <li><a href="javascript:draw('Colimore');">Dalkey Sound</a>
+        <li><a href="javascript:draw('Rosbank');">Rosbank Area</a>
+      </ul>
+    </div>
+    <div class="col-md-11">
+      <div id="webgl" style="width:100%;"></div>
+    </div>
+
+    <script>
+        window.points = {};
+    </script>
+
+    <script src="./animate.js"></script>
+    <script src="./muglins.js"></script>
+    <script src="./rosbank.js"></script>
+    <script src="./colimore.js"></script>
+    <script src="./guideme.js"></script>
+
+    <script>
+      draw("Muglins");
+    </script>
+
+  </body>
+</html>
+

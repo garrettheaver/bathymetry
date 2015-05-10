@@ -30,6 +30,9 @@ function draw(name) {
   scene.add(mesh);
 
   controls.reset();
+  camera.position.set(0, -200, 30);
+  mesh.position.z = 20;
+  mesh.rotation.z = -0.8;
 }
 
 function init() {
@@ -44,13 +47,11 @@ function init() {
   scene.add(new THREE.AmbientLight(0xeeeeee));
 
   camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-  camera.position.set(0, -30, 30);
 
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(width, height);
 
   controls = new THREE.TrackballControls(camera);
-
   container.appendChild(renderer.domElement);
 
   colors = new Rainbow();

@@ -1,4 +1,4 @@
-var scene, light, camera, renderer, mesh, controls;
+var container, scene, light, camera, renderer, mesh, controls, colors;
 
 function draw(name) {
   var points = window.points[name];
@@ -16,8 +16,15 @@ function draw(name) {
   }
 
   var material = new THREE.MeshPhongMaterial({
-    color: 0xdddddd, wireframe: true
+    color: 0xdddddd, wireframe: true,
+    vertexColors : THREE.VertexColors
   });
+
+  for (var i = 0; i < geometry.faces.length; i++) {
+    var face = geometry.faces[i];
+    var vertexA = geometry.vertices[face.a];
+    face.color.setHex(parseInt(colors.colorAt(-vertexA.z), 16));
+  }
 
   mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
@@ -27,7 +34,7 @@ function draw(name) {
 
 function init() {
 
-  var container = document.getElementById('webgl');
+  container = document.getElementById('webgl');
 
   console.log(container);
   var width  = container.clientWidth
@@ -45,6 +52,10 @@ function init() {
   controls = new THREE.TrackballControls(camera);
 
   container.appendChild(renderer.domElement);
+
+  colors = new Rainbow();
+  colors.setSpectrum('#1a820f', '#1c3cdf', '#960ffe');
+  colors.setNumberRange(0, 40);
 
   animate();
 }

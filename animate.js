@@ -7,12 +7,11 @@ function draw(name) {
     scene.remove(mesh);
   }
 
-  var xSegs = dimensions(points, function(x) { return x[0]; });
-  var ySegs = dimensions(points, function(x) { return x[1]; });
-
-  var geometry = new THREE.PlaneGeometry(200, 200, xSegs - 1, ySegs - 1);
-  for (var i = 0, l = geometry.vertices.length; i < l; i++) {
-    geometry.vertices[i].z = points[i][2];
+  var geometry = new THREE.PlaneGeometry(points.x, points.y, points.x - 1, points.y - 1);
+  for (var i = 0, v = 0; i < points.data.length; i++) {
+    for (var j = 0; j < points.data[i][0]; j++, v++) {
+      geometry.vertices[v].z = points.data[i][1];
+    }
   }
 
   var material = new THREE.MeshPhongMaterial({
@@ -31,8 +30,9 @@ function draw(name) {
 
   controls.reset();
   camera.position.set(0, -200, 30);
-  mesh.position.z = 20;
+
   mesh.rotation.z = -0.8;
+  mesh.position.z = 20;
 }
 
 function init() {

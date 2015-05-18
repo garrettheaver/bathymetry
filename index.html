@@ -54,6 +54,9 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+      ga('create', 'UA-63099840-1', 'auto');
+      ga('send', 'pageview');
+
       function render(name) {
         _gaq.push(['_setCustomVar', 1, 'Render', name, 3]);
         draw(name);
@@ -62,9 +65,6 @@
       window.onload = function() {
         render("Muglins");
       }
-
-      ga('create', 'UA-63099840-1', 'auto');
-      ga('send', 'pageview');
 
     </script>
 
